@@ -2,7 +2,11 @@ import type { NextPage } from "next";
 import styled from "styled-components";
 
 const Home: NextPage = () => {
-  return <LandingPage>VisionX</LandingPage>;
+  return (
+    <LandingPage>
+      <h1>VisionX</h1>
+    </LandingPage>
+  );
 };
 
 const LandingPage = styled.div`
