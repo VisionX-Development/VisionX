@@ -3,7 +3,7 @@ import * as styled from "styled-components";
 export const GlobalStyle = styled.createGlobalStyle`
   html,
   body {
-    height: 100vh;
+    height: 100%;
     background-color: rgb(24, 24, 24);
     background-image: linear-gradient(
       150deg,
