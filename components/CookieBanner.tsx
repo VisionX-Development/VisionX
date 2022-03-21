@@ -69,8 +69,8 @@ const CookieWrapper = styled.div`
   z-index: 1;
   position: sticky;
   bottom: 0;
-  font-size: 1.5rem;
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.2rem;
+  width: 100vw;
 
   button {
     border: 1px solid #ff0000;
@@ -78,23 +78,36 @@ const CookieWrapper = styled.div`
     box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.6);
     background: rgba(95, 95, 95, 0.3);
     color: rgb(255, 0, 0);
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-family: inherit;
     display: flex;
     flex-direction: column;
     justify-content: center;
     outline: none;
     font-weight: bold;
+
+    :active {
+      outline: none;
+      padding: 1.2rem 0 0.8rem 0;
+      box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.1) !important;
+      text-shadow: 5px 5px 10px rgba(0, 0, 0, 0) !important;
+    }
+
+    :focus {
+      outline: none;
+    }
+
+    :hover {
+      box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.1);
+      background: rgba(95, 95, 95, 0.6);
+      cursor: pointer;
+    }
   }
 
-  .link {
+  .link a {
     font-size: 1.5rem;
-  }
-
-  button :hover {
-    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.1);
-    background: rgba(95, 95, 95, 0.6);
-    cursor: pointer;
+    color: #ff0000;
+    text-decoration: none;
   }
 
   // phone

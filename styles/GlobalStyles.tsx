@@ -3,20 +3,24 @@ import * as styled from "styled-components";
 export const GlobalStyle = styled.createGlobalStyle`
   html,
   body {
-    height: 100%;
-    background-color: rgb(24, 24, 24);
+    height: 100vh;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     background-image: linear-gradient(
       150deg,
       rgb(24, 24, 24) 20%,
       rgb(68, 68, 68) 100%
     );
+    background-repeat: no-repeat;
     font-family: "Play";
     color: #ff0000;
     margin: 0;
     padding: 0;
     border: 0;
     outline: 0;
-    font-size: 1vw;
+    font-size: 1vmax;
     z-index: -1;
   }
 
@@ -40,14 +44,6 @@ export const GlobalStyle = styled.createGlobalStyle`
 
   /* phone */
   @media (max-width: 600px) {
-    html,
-    body {
-      background-image: linear-gradient(
-        150deg,
-        rgb(24, 24, 24) 50%,
-        rgb(68, 68, 68) 100%
-      );
-    }
   }
   /* tablet portrait */
   @media (max-width: 900px) {

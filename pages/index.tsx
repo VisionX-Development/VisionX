@@ -12,8 +12,8 @@ const Home: NextPage = () => {
       <ImageWraper>
         <Image alt="Logo" src={Logo} width={500} height={500} />
       </ImageWraper>
-      VisionX
-      <LandingSub>Webentwicklung</LandingSub>
+      <div className="titel">VisionX</div>
+      <div className="subtitel">Webentwicklung</div>
       {showCookieBanner && <CookieBanner />}
     </LandingPage>
   );
@@ -27,25 +27,34 @@ const LandingPage = styled.div`
   justify-content: center;
   align-items: center;
   color: #ff0000;
-  font-size: 6rem;
-  letter-spacing: 2.5rem;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 1);
-`;
 
-const LandingSub = styled.div`
-  color: #ff0000;
-  font-size: 2rem;
-  letter-spacing: 1.5rem;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 1);
-  margin: 2rem;
+  .titel {
+    font-size: 8vmax;
+    letter-spacing: 2.5rem;
+  }
+
+  .subtitel {
+    font-size: 3vmax;
+    letter-spacing: 1.5rem;
+    margin: 2rem;
+  }
 
   // phone
   @media (max-width: 600px) {
-    font-size: 6rem;
-    letter-spacing: 1rem;
   }
+
   // tablet portrait
   @media (max-width: 900px) {
+    .titel {
+      font-size: 12rem;
+      letter-spacing: 3.5rem;
+    }
+
+    .subtitel {
+      font-size: 4rem;
+      letter-spacing: 2.3rem;
+    }
   }
   // tablet landscape
   @media (max-width: 1200px) {
