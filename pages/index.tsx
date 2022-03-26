@@ -7,6 +7,7 @@ import { useStoreState } from "../store/GlobalState";
 
 const Home: NextPage = () => {
   const showCookieBanner = useStoreState((state) => state.showCookieBanner);
+
   return (
     <LandingPage>
       <ImageWraper>
