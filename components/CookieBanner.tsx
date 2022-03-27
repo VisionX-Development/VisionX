@@ -41,7 +41,7 @@ const CookieBanner = (): JSX.Element => {
 
   return (
     <CookieWrapper>
-      <h1> Wir nutzen Cookies um die Darstellung zu verbessern.</h1>
+      <h1> Cookies für diese Seite verbessern die Darstellung</h1>
       <div className="link">
         <Link href="/">Infos zum Datenschutz</Link>
       </div>
@@ -65,26 +65,29 @@ const CookieWrapper = styled.div`
   color: #ff0000;
   text-decoration: none;
   font-size: 1rem;
-  margin-bottom: 1rem;
+  margin: 1vmax;
   z-index: 1;
   position: sticky;
   bottom: 0;
   letter-spacing: 0.2rem;
   width: 100vw;
+  font-size: 1.5vmax;
 
   button {
     border: 1px solid #ff0000;
     border-radius: 10px;
+    height: 7vmax;
     box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.6);
     background: rgba(95, 95, 95, 0.3);
     color: rgb(255, 0, 0);
-    font-size: 1.5rem;
+    font-size: 2vmax;
     font-family: inherit;
     display: flex;
     flex-direction: column;
     justify-content: center;
     outline: none;
     font-weight: bold;
+    margin: 1vmax;
 
     :active {
       outline: none;
@@ -105,22 +108,13 @@ const CookieWrapper = styled.div`
   }
 
   .link a {
-    font-size: 1.5rem;
+    font-size: 2vmax;
     color: #ff0000;
     text-decoration: none;
   }
 
   // phone
   @media (max-width: 600px) {
-    font-size: 2rem;
-
-    button {
-      font-size: 3rem;
-      margin: 0.5rem;
-    }
-    .link {
-      font-size: 2.5rem;
-    }
   }
   // tablet portrait
   @media (max-width: 900px) {

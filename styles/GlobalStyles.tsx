@@ -3,24 +3,33 @@ import * as styled from "styled-components";
 export const GlobalStyle = styled.createGlobalStyle`
   html,
   body {
-    height: 100vh;
+    font-size: 1vmax;
+    height: 100%;
+    width: 100%;
     align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-image: linear-gradient(
+    background: linear-gradient(
       150deg,
       rgb(24, 24, 24) 20%,
       rgb(68, 68, 68) 100%
     );
     background-repeat: no-repeat;
+    background-size: cover;
     font-family: "Play";
     color: #ff0000;
+    background-color: rgb(24, 24, 24);
     margin: 0;
     padding: 0;
     border: 0;
     outline: 0;
-    font-size: 1vmax;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
     z-index: -1;
   }
 

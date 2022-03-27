@@ -36,29 +36,41 @@ const LandingPage = styled.div`
   }
 
   .subtitel {
-    font-size: 3vmax;
-    letter-spacing: 1.5rem;
+    font-size: 4vmax;
+    letter-spacing: 1rem;
     margin: 2rem;
   }
 
   // phone
   @media (max-width: 600px) {
-  }
-
-  // tablet portrait
-  @media (max-width: 900px) {
     .titel {
-      font-size: 12rem;
-      letter-spacing: 3.5rem;
+      font-size: 7vmax;
+      letter-spacing: 2.5rem;
     }
 
     .subtitel {
-      font-size: 4rem;
-      letter-spacing: 2.3rem;
+      font-size: 3vmax;
+      letter-spacing: 1.2rem;
+      margin: 2rem;
     }
   }
+
+  // tablet portrait
+  @media (min-width: 601px) and (max-width: 900px) {
+    .titel {
+      font-size: 12vmax;
+      letter-spacing: 2.5rem;
+    }
+
+    .subtitel {
+      font-size: 5vmax;
+      letter-spacing: 1.3rem;
+      margin: 2rem;
+    }
+  }
+
   // tablet landscape
-  @media (max-width: 1200px) {
+  @media (min-width: 1200px) {
   }
   // desktop
   @media (max-width: 1800px) {
