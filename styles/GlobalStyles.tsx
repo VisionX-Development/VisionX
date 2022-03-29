@@ -4,8 +4,8 @@ export const GlobalStyle = styled.createGlobalStyle`
   html,
   body {
     font-size: 1vmax;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     align-items: center;
     display: flex;
     flex-direction: row;

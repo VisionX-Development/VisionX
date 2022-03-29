@@ -25,10 +25,14 @@ const LandingPage = styled.div`
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   color: #ff0000;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 1);
+
+  @media screen and (min-width: 100vh) {
+    /* The width is greater than the height */
+  }
 
   .titel {
     font-size: 8vmax;

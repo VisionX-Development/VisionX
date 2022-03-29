@@ -71,7 +71,7 @@ const CookieWrapper = styled.div`
   bottom: 0;
   letter-spacing: 0.2rem;
   width: 100vw;
-  font-size: 1.5vmax;
+  font-size: 1.2vmax;
 
   button {
     border: 1px solid #ff0000;
@@ -80,7 +80,7 @@ const CookieWrapper = styled.div`
     box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.6);
     background: rgba(95, 95, 95, 0.3);
     color: rgb(255, 0, 0);
-    font-size: 2vmax;
+    font-size: 2.5vmax;
     font-family: inherit;
     display: flex;
     flex-direction: column;
