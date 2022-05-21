@@ -41,7 +41,7 @@ const CookieBanner = (): JSX.Element => {
 
   return (
     <CookieWrapper>
-      <h1> Cookies für diese Seite verbessern die Darstellung</h1>
+      <h1 data-testid="cookie warning"> Cookies verbessern die Darstellung</h1>
       <div className="link">
         <Link href="/">Infos zum Datenschutz</Link>
       </div>

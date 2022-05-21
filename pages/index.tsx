@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import styled from "styled-components";
 import Image from "next/image";
 import Logo from "../src/images/VisionX_Logo.svg";
+import Navbar from "../components/navbar/Navbar";
 import CookieBanner from "../components/CookieBanner";
 import { useStoreState } from "../store/GlobalState";
 
@@ -9,14 +10,17 @@ const Home: NextPage = () => {
   const showCookieBanner = useStoreState((state) => state.showCookieBanner);
 
   return (
-    <LandingPage>
-      <ImageWraper>
-        <Image alt="Logo" src={Logo} width={500} height={500} />
-      </ImageWraper>
-      <div className="titel">VisionX</div>
-      <div className="subtitel">Webentwicklung</div>
-      {showCookieBanner && <CookieBanner />}
-    </LandingPage>
+    <>
+      <Navbar />
+      <LandingPage>
+        <ImageWraper>
+          <Image alt="Logo" src={Logo} width={500} height={500} />
+        </ImageWraper>
+        <div className="titel">VisionX</div>
+        <div className="subtitel">Webentwicklung</div>
+        {showCookieBanner && <CookieBanner />}
+      </LandingPage>
+    </>
   );
 };
 

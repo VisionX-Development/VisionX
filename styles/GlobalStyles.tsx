@@ -11,9 +11,9 @@ export const GlobalStyle = styled.createGlobalStyle`
     flex-direction: row;
     justify-content: space-around;
     background: linear-gradient(
-      150deg,
-      rgb(24, 24, 24) 20%,
-      rgb(68, 68, 68) 100%
+      170deg,
+      rgb(68, 68, 68) 30%,
+      rgb(24, 24, 24) 80%
     );
     background-repeat: no-repeat;
     background-size: cover;
