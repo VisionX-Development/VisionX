@@ -1,13 +1,26 @@
 import type { NextPage } from "next";
+import { useEffect } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import Logo from "../src/images/VisionX_Logo.svg";
 import Navbar from "../components/navbar/Navbar";
 import CookieBanner from "../components/CookieBanner";
-import { useStoreState } from "../store/GlobalState";
+import { useStoreState, useStoreActions } from "../store/GlobalState";
+import Cookies from "universal-cookie";
 
 const Home: NextPage = () => {
   const showCookieBanner = useStoreState((state) => state.showCookieBanner);
+  const setCookieBanner = useStoreActions((state) => state.setCookieBanner);
+
+  const checkCookie = (): boolean => {
+    const cookies = new Cookies();
+    const hasCookie = cookies.get("VisionX_Privacy_Policy");
+    return hasCookie;
+  };
+
+  useEffect(() => {
+    !checkCookie() && !showCookieBanner && setCookieBanner(true);
+  }, []);
 
   return (
     <>

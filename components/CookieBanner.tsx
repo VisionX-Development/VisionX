@@ -5,24 +5,17 @@ import { useStoreActions } from "../store/GlobalState";
 import Cookies from "universal-cookie";
 
 const CookieBanner = (): JSX.Element => {
-  //const showCookieBanner = useStoreState((state) => state.showCookieBanner);
   const setCookieConsent = useStoreActions((state) => state.setCookieConsent);
 
   const setCookieBanner = useStoreActions((state) => state.setCookieBanner);
 
   const setCookie = () => {
-    //set an Accept_Cookies_VisionX Cookie
+    //set and Accept_Cookies_VisionX Cookie
     const cookies = new Cookies();
-    cookies.set("Accept_Cookies_VisionX", true, {
+    cookies.set("VisionX_Privacy_Policy", true, {
       path: "/",
       maxAge: 15768000,
     });
-  };
-
-  const checkCookie = () => {
-    const cookies = new Cookies();
-    const hasCookie = cookies.get("Accept_Cookies_VisionX");
-    return hasCookie;
   };
 
   const handleCookieAccept = () => {
@@ -34,10 +27,6 @@ const CookieBanner = (): JSX.Element => {
   const handleCookieRejection = () => {
     setCookieBanner(false);
   };
-
-  useEffect(() => {
-    checkCookie() && setCookieBanner(false);
-  });
 
   return (
     <CookieWrapper>

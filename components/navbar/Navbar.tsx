@@ -3,16 +3,28 @@ import Image from "next/image";
 import log_in_icon from "../../src/images/log_in.svg";
 import logo from "../../src/images/VisionX_Logo.svg";
 import styled from "styled-components";
+import { Modal } from "../modal/Modal";
+import { useModal } from "../../utils/hooks/useModal";
+import { LoginModal } from "./LoginModal";
 
 const Navbar = () => {
+  const { isShown, toggle } = useModal();
+  const onConfirm = () => toggle();
+  const onCancel = () => toggle();
   return (
     <NavMain>
       <ImageWraper data-testid="logo">
         <Image alt="logo" src={logo} layout="responsive" />
       </ImageWraper>
-      <ImageWraper data-testid="log_in_icon">
+      <ImageWraper data-testid="log_in_icon" onClick={toggle}>
         <Image alt="log_in_icon" src={log_in_icon} layout="responsive" />
       </ImageWraper>
+      <Modal
+        isShown={isShown}
+        hide={toggle}
+        headerText="Login"
+        modalContent={<LoginModal onConfirm={onConfirm} onCancel={onCancel} />}
+      />
     </NavMain>
   );
 };
@@ -53,7 +65,12 @@ const NavMain = styled.div`
 `;
 
 const ImageWraper = styled.div`
-  filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 1));
+  filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.2));
   display: block;
   width: 50px;
+  cursor: pointer;
+
+  :hover {
+    filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.8));
+  }
 `;

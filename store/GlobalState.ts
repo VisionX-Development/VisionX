@@ -11,7 +11,7 @@ interface GlobalStateModel {
 
 const GlobalState = createStore<GlobalStateModel>({
   cookieConsent: false,
-  showCookieBanner: true,
+  showCookieBanner: false,
   setCookieConsent: action((state, payload: boolean) => {
     state.cookieConsent = payload;
   }),
