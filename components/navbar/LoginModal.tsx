@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import styled from "styled-components";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Input, Spacer, Button } from "@nextui-org/react";
+import validator from "validator";
 
 interface LoginModalProps {
   onConfirm: () => void;
@@ -13,15 +14,16 @@ type Inputs = {
   password: string;
 };
 
-export const LoginModal: FunctionComponent<LoginModalProps> = (props) => {
+export const LoginModal: FunctionComponent<LoginModalProps> = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    const isEmail = validator.isEmail(data.email);
+  };
   return (
     <React.Fragment>
       <FormWrapper>
@@ -30,9 +32,8 @@ export const LoginModal: FunctionComponent<LoginModalProps> = (props) => {
           <Input
             width="100%"
             clearable
-            bordered
-            labelPlaceholder="Email"
-            color="default"
+            label="Email"
+            size="xl"
             {...register("email", { required: true })}
           />
 
@@ -46,9 +47,8 @@ export const LoginModal: FunctionComponent<LoginModalProps> = (props) => {
           {/* include validation with required or other standard HTML validation rules */}
           <Input.Password
             width="100%"
-            clearable
-            bordered
-            labelPlaceholder="Password"
+            label="Password"
+            size="xl"
             {...register("password", { required: true })}
           />
           {/* errors will return when field validation fails  */}
@@ -60,7 +60,11 @@ export const LoginModal: FunctionComponent<LoginModalProps> = (props) => {
           <Spacer y={2} />
 
           <Button
-            css={{ width: "100%", backgroundColor: "rgba(120, 250, 140, 0.5)" }}
+            css={{
+              width: "100%",
+              backgroundColor: "rgba(120, 250, 140, 0.7)",
+              fontSize: "1.5rem",
+            }}
             type="submit"
           >
             Signup
@@ -72,18 +76,14 @@ export const LoginModal: FunctionComponent<LoginModalProps> = (props) => {
 };
 
 const FormWrapper = styled.div`
-  width: 30vw;
+  width: 40vw;
   padding: 30px;
+  .nextui-c-hzQjrs {
+    color: #fff;
+    font-size: 1.5rem;
+  }
 `;
 
 const ErrorMessage = styled.div`
   padding: 10px;
-`;
-
-const ButtonWrapper = styled.div`
-  width: 100%;
-  background-color: lightgrey;
-  :hover {
-    background-color: grey;
-  }
 `;

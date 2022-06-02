@@ -24,8 +24,8 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <Navbar />
       <LandingPage>
+        <Navbar />
         <ImageWraper>
           <Image alt="Logo" src={Logo} width={500} height={500} />
         </ImageWraper>
@@ -46,6 +46,7 @@ const LandingPage = styled.div`
   align-items: center;
   color: #ff0000;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 1);
+  overflow: scroll;
 
   @media screen and (min-width: 100vh) {
     /* The width is greater than the height */

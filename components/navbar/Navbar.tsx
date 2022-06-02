@@ -43,14 +43,10 @@ const NavMain = styled.div`
   background-color: rgba(51, 51, 51, 0.6);
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 1);
   font-size: 2rem;
+  width: 100vw;
 
   // phone
   @media (max-width: 600px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: stretch;
-    padding: 1vw 15vw 1vw 15vw;
   }
   // tablet portrait
   @media (max-width: 900px) {

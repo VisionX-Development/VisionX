@@ -34,7 +34,6 @@ export const GlobalStyle = styled.createGlobalStyle`
   }
 
   /* hides all scrollbars */
-  .displayNone,
   ::-webkit-scrollbar {
     display: none !important;
   }
