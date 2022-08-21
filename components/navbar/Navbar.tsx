@@ -2,15 +2,17 @@ import React, { Component, ReactComponentElement } from "react";
 import Image from "next/image";
 import log_in_icon from "../../src/images/log_in.svg";
 import logo from "../../src/images/VisionX_Logo.svg";
-import styled from "styled-components";
+import styled, { IntrinsicElementsKeys } from "styled-components";
 import { Modal } from "../modal/Modal";
 import { useModal } from "../../utils/hooks/useModal";
 import { LoginModal } from "./LoginModal";
 
-const Navbar = () => {
+const Navbar: React.FC<{}> = () => {
   const { isShown, toggle } = useModal();
+
   const onConfirm = () => toggle();
   const onCancel = () => toggle();
+
   return (
     <NavMain>
       <ImageWraper data-testid="logo">
