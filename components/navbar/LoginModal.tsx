@@ -1,8 +1,10 @@
-import React, { useState, useRef, FunctionComponent } from "react";
 import styled from "styled-components";
-import { Input, Spacer, Button } from "@nextui-org/react";
+import { Spacer, Button } from "@nextui-org/react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { signIn } from "next-auth/client";
+import { useStoreActions } from "../../store/GlobalState";
+//import { createUser } from "../../utils/auth/auth";
 
 interface NavbarProps {
   onConfirm: () => void;
@@ -16,9 +18,11 @@ interface MyFormValues {
 
 const SignupSchema = Yup.object().shape({
   password: Yup.string()
-    .min(5, "Passwort muss mindestens 5 Zeichen lang sein.")
-    .max(50, "Passwort ist zu lang!")
-    .required("Bitte geben Sie ein Passwort ein."),
+    .required("Bitte geben Sie ein Passwort ein.")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{5,})/,
+      "Muss mindestens 5 Ziffern enthalten, ein Großbuchstabe, ein Kleinbuchstabe und ein Sonderzeichen."
+    ),
   email: Yup.string()
     .email("Email ist ungültig. Bitte korrekte Email eingeben.")
     .required("Required"),
@@ -26,13 +30,38 @@ const SignupSchema = Yup.object().shape({
 
 export const LoginModal: React.FC<NavbarProps> = (props: NavbarProps) => {
   const initialValues: MyFormValues = { email: "", password: "" };
+  const setAlert = useStoreActions((state) => state.setAlert);
+
+  // const handleCreateUser = async (email: string, password: string) => {
+  //   try {
+  //     await createUser(email, password);
+  //   } catch (error: any) {
+  //     setAlert({ message: error.message, type: "warning" });
+  //   }
+  // };
+
+  const handleSignIn = async (email: string, password: string) => {
+    const result = await signIn("credentials", {
+      redirect: false,
+      email: email,
+      password: password,
+    });
+
+    if (result) {
+      if (!result.error) {
+        console.log(result);
+      } else {
+        setAlert({ message: result.error, type: "warning" });
+      }
+    }
+  };
+
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={SignupSchema}
       onSubmit={(values, actions) => {
-        console.log({ values, actions });
-        console.log(JSON.stringify(values, null, 2));
+        handleSignIn(values.email, values.password);
         actions.setSubmitting(false);
       }}
     >
@@ -61,7 +90,11 @@ export const LoginModal: React.FC<NavbarProps> = (props: NavbarProps) => {
             />
             <ErrorMessage name="password" />
             <Spacer y={2} />
-            <Button type="submit" size="xl" css={{ width: "100%" }}>
+            <Button
+              type="submit"
+              size="xl"
+              css={{ width: "100%", fontSize: "2rem" }}
+            >
               Login
             </Button>
           </Form>
@@ -74,22 +107,19 @@ export const LoginModal: React.FC<NavbarProps> = (props: NavbarProps) => {
 const FormWrapper = styled.div`
   width: 40vw;
   padding: 30px;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 
   .nextui-c-hzQjrs {
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   input {
     width: 100%;
     height: 40px;
-    font-size: 1.3rem;
     border-radius: 5px;
     padding: 7px;
+    color: #000000;
+    font-size: 2rem;
   }
-`;
-
-const ErrorMessageWrapper = styled.div`
-  padding: 10px;
 `;

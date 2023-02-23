@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { useEffect } from "react";
 import styled from "styled-components";
 import { useStoreActions } from "../store/GlobalState";
 import Cookies from "universal-cookie";

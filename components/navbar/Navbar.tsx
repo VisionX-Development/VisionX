@@ -1,11 +1,14 @@
 import React, { Component, ReactComponentElement } from "react";
 import Image from "next/image";
 import log_in_icon from "../../src/images/log_in.svg";
+import log_out_icon from "../../src/images/log_out.svg";
 import logo from "../../src/images/VisionX_Logo.svg";
-import styled, { IntrinsicElementsKeys } from "styled-components";
+import styled from "styled-components";
 import { Modal } from "../modal/Modal";
 import { useModal } from "../../utils/hooks/useModal";
 import { LoginModal } from "./LoginModal";
+import { useSession } from "next-auth/client";
+import { signOut } from "next-auth/client";
 
 const Navbar: React.FC<{}> = () => {
   const { isShown, toggle } = useModal();
@@ -13,13 +16,28 @@ const Navbar: React.FC<{}> = () => {
   const onConfirm = () => toggle();
   const onCancel = () => toggle();
 
+  const [session, loading] = useSession();
+
+  const handleSignOut = async () => {
+    signOut({ redirect: false });
+  };
+
   return (
     <NavMain>
       <ImageWraper data-testid="logo">
         <Image alt="logo" src={logo} layout="responsive" />
       </ImageWraper>
       <ImageWraper data-testid="log_in_icon" onClick={toggle}>
-        <Image alt="log_in_icon" src={log_in_icon} layout="responsive" />
+        {session ? (
+          <Image
+            alt="log_out_icon"
+            src={log_out_icon}
+            layout="responsive"
+            onClick={handleSignOut}
+          />
+        ) : (
+          <Image alt="log_in_icon" src={log_in_icon} layout="responsive" />
+        )}
       </ImageWraper>
       <Modal
         isShown={isShown}

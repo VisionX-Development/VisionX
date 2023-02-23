@@ -5,12 +5,15 @@ import Image from "next/image";
 import Logo from "../src/images/VisionX_Logo.svg";
 import Navbar from "../components/navbar/Navbar";
 import CookieBanner from "../components/CookieBanner";
+import AlertBox from "../components/alert";
 import { useStoreState, useStoreActions } from "../store/GlobalState";
 import Cookies from "universal-cookie";
 
 const Home: NextPage = () => {
   const showCookieBanner = useStoreState((state) => state.showCookieBanner);
   const setCookieBanner = useStoreActions((state) => state.setCookieBanner);
+  const alertState = useStoreState((state) => state.alert);
+  const setAlertState = useStoreActions((state) => state.setAlert);
 
   const checkCookie = (): boolean => {
     const cookies = new Cookies();
@@ -22,6 +25,13 @@ const Home: NextPage = () => {
     !checkCookie() && !showCookieBanner && setCookieBanner(true);
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAlertState({ type: "none", message: "no alert" });
+    }, 6000);
+    return () => clearTimeout(timer);
+  }, [alertState]);
+
   return (
     <>
       <LandingPage>
@@ -30,8 +40,9 @@ const Home: NextPage = () => {
           <Image alt="Logo" src={Logo} width={500} height={500} />
         </ImageWraper>
         <div className="titel">VisionX</div>
-        <div className="subtitel">Webentwicklung</div>
+        <div className="subtitel">Report Management System</div>
         {showCookieBanner && <CookieBanner />}
+        {alertState.type !== "none" && <AlertBox />}
       </LandingPage>
     </>
   );
@@ -58,8 +69,8 @@ const LandingPage = styled.div`
   }
 
   .subtitel {
-    font-size: 4vmax;
-    letter-spacing: 1rem;
+    font-size: 2.5vmax;
+    letter-spacing: 0.5rem;
     margin: 2rem;
   }
 

@@ -3,20 +3,40 @@ import { Action } from "easy-peasy";
 import { createTypedHooks } from "easy-peasy";
 
 interface GlobalStateModel {
+  //Auth State
+  isLoggedIn: boolean;
+  setIsLoggedIn: Action<GlobalStateModel, boolean>;
+  // Cookie Consent
   cookieConsent: boolean;
   showCookieBanner: boolean;
   setCookieConsent: Action<GlobalStateModel, boolean>;
   setCookieBanner: Action<GlobalStateModel, boolean>;
+  // Alert Banner
+  alert: { message: string; type: string };
+  setAlert: Action<GlobalStateModel, { message: string; type: string }>;
 }
 
 const GlobalState = createStore<GlobalStateModel>({
+  //Auth State
+  isLoggedIn: false,
+  setIsLoggedIn: action((state, payload: boolean) => {
+    state.isLoggedIn = payload;
+  }),
+
+  // Cookie Consent
   cookieConsent: false,
-  showCookieBanner: false,
   setCookieConsent: action((state, payload: boolean) => {
     state.cookieConsent = payload;
   }),
+  showCookieBanner: false,
   setCookieBanner: action((state, payload: boolean) => {
     state.showCookieBanner = payload;
+  }),
+
+  // Alert Banner
+  alert: { message: "no alert", type: "none" },
+  setAlert: action((state, payload: { message: string; type: string }) => {
+    state.alert = payload;
   }),
 });
 

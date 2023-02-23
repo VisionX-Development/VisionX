@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 import FocusLock from "react-focus-lock";
-import close_icon from "../../src/images/close.svg";
+import close_icon from "../../src/images/close_white.svg";
 import Image from "next/image";
 
 export interface ModalProps {
@@ -119,14 +119,13 @@ const Header = styled.div`
 
 const HeaderText = styled.div`
   align-self: center;
-  font-size: 1.7rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #fff;
   padding: 0.5rem;
 `;
 
 const CloseButton = styled.button`
-  font-size: 0.8rem;
   border: none;
   border-radius: 3px;
   margin-left: 0.5rem;
