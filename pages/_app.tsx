@@ -3,22 +3,23 @@ import GlobalStyles from "../styles/GlobalStyles";
 import Head from "next/head";
 import { StoreProvider } from "easy-peasy";
 import GlobalState from "../store/GlobalState";
+import { NextUIProvider } from "@nextui-org/react";
+import { Provider } from "next-auth/client";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <GlobalStyles>
-      <Head>
-        <title>VisionX - Webdevelopment</title>
-        <meta name="Home of VisionX" content="Home of VisionX" />
-        <style>
-          @import
-          url(https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap);
-        </style>
-      </Head>
-      <StoreProvider store={GlobalState}>
-        <Component {...pageProps} />
-      </StoreProvider>
-    </GlobalStyles>
+    <Provider session={pageProps.session}>
+      <NextUIProvider>
+        <GlobalStyles>
+          <Head>
+            <title>VisionX</title>
+          </Head>
+          <StoreProvider store={GlobalState}>
+            <Component {...pageProps} />
+          </StoreProvider>
+        </GlobalStyles>
+      </NextUIProvider>
+    </Provider>
   );
 }
 

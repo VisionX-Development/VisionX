@@ -1,18 +1,67 @@
 import React, { Component, ReactComponentElement } from "react";
 import Image from "next/image";
 import log_in_icon from "../../src/images/log_in.svg";
+import log_out_icon from "../../src/images/log_out.svg";
 import logo from "../../src/images/VisionX_Logo.svg";
 import styled from "styled-components";
+import { Modal } from "../modal/Modal";
+import { useModal } from "../../utils/hooks/useModal";
+import { LoginModal } from "./LoginModal";
+import { useSession } from "next-auth/client";
+import { signOut } from "next-auth/client";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-const Navbar = () => {
+const Navbar: React.FC<{}> = () => {
+  const { isShown, toggle } = useModal();
+
+  const [session, loading] = useSession();
+
+  const handleSignOut = async () => {
+    signOut({ redirect: true });
+  };
+
+  const router = useRouter();
+  const thisPath: boolean = router.pathname === "/home";
+
   return (
     <NavMain>
       <ImageWraper data-testid="logo">
-        <Image alt="logo" src={logo} layout="responsive" />
+        <Link href="/">
+          <Image alt="logo" src={logo} layout="responsive" priority={true} />
+        </Link>
       </ImageWraper>
-      <ImageWraper data-testid="log_in_icon">
-        <Image alt="log_in_icon" src={log_in_icon} layout="responsive" />
+      {session && !thisPath && (
+        <MenueWrapper>
+          <Link href="/home">Home</Link>
+        </MenueWrapper>
+      )}
+      <ImageWraper>
+        {session ? (
+          <Image
+            alt="log_out_icon"
+            src={log_out_icon}
+            layout="responsive"
+            onClick={handleSignOut}
+            priority={true}
+          />
+        ) : (
+          <Image
+            alt="log_in_icon"
+            src={log_in_icon}
+            layout="responsive"
+            priority={true}
+            data-testid="log_in_icon"
+            onClick={toggle}
+          />
+        )}
       </ImageWraper>
+      <Modal
+        isShown={isShown}
+        hide={toggle}
+        headerText="Login"
+        modalContent={<LoginModal />}
+      />
     </NavMain>
   );
 };
@@ -30,15 +79,11 @@ const NavMain = styled.div`
   top: 0;
   background-color: rgba(51, 51, 51, 0.6);
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 1);
-  font-size: 2rem;
+  font-size: 1.8rem;
+  width: 100vw;
 
   // phone
   @media (max-width: 600px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: stretch;
-    padding: 1vw 15vw 1vw 15vw;
   }
   // tablet portrait
   @media (max-width: 900px) {
@@ -53,7 +98,30 @@ const NavMain = styled.div`
 `;
 
 const ImageWraper = styled.div`
-  filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 1));
+  filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.2));
   display: block;
   width: 50px;
+  cursor: pointer;
+
+  :hover {
+    filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.8));
+  }
+`;
+
+const MenueWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  cursor: pointer;
+
+  a {
+    color: red;
+    text-decoration: none;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+  }
+
+  :hover {
+    filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.2));
+  }
 `;

@@ -1,28 +1,20 @@
 import Link from "next/link";
-import { useEffect } from "react";
 import styled from "styled-components";
 import { useStoreActions } from "../store/GlobalState";
 import Cookies from "universal-cookie";
 
 const CookieBanner = (): JSX.Element => {
-  //const showCookieBanner = useStoreState((state) => state.showCookieBanner);
   const setCookieConsent = useStoreActions((state) => state.setCookieConsent);
 
   const setCookieBanner = useStoreActions((state) => state.setCookieBanner);
 
   const setCookie = () => {
-    //set an Accept_Cookies_VisionX Cookie
+    //set and Accept_Cookies_VisionX Cookie
     const cookies = new Cookies();
-    cookies.set("Accept_Cookies_VisionX", true, {
+    cookies.set("VisionX_Privacy", true, {
       path: "/",
       maxAge: 15768000,
     });
-  };
-
-  const checkCookie = () => {
-    const cookies = new Cookies();
-    const hasCookie = cookies.get("Accept_Cookies_VisionX");
-    return hasCookie;
   };
 
   const handleCookieAccept = () => {
@@ -35,17 +27,13 @@ const CookieBanner = (): JSX.Element => {
     setCookieBanner(false);
   };
 
-  useEffect(() => {
-    checkCookie() && setCookieBanner(false);
-  });
-
   return (
     <CookieWrapper>
       <h1 data-testid="cookie warning"> Cookies verbessern die Darstellung</h1>
       <div className="link">
         <Link href="/">Infos zum Datenschutz</Link>
       </div>
-      <button onClick={handleCookieAccept}>OK</button>
+      <button onClick={handleCookieAccept}>Akzeptieren</button>
       <button onClick={handleCookieRejection}>Ablehnen</button>
     </CookieWrapper>
   );
@@ -62,25 +50,29 @@ const CookieWrapper = styled.div`
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.8);
   background: rgba(24, 24, 24, 0.9);
   text-align: center;
-  color: #ff0000;
+  color: red;
   text-decoration: none;
-  font-size: 1rem;
   margin: 1vmax;
   z-index: 1;
   position: sticky;
   bottom: 0;
   letter-spacing: 0.2rem;
   width: 100vw;
-  font-size: 1.2vmax;
+
+  h1 {
+    font-size: 2vmax;
+    font-weight: bold;
+    margin: 1vmax;
+  }
 
   button {
     border: 1px solid #ff0000;
     border-radius: 10px;
-    height: 7vmax;
+    height: 4vmax;
     box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.6);
     background: rgba(95, 95, 95, 0.3);
-    color: rgb(255, 0, 0);
-    font-size: 2.5vmax;
+    color: red;
+    font-size: 1.5vmax;
     font-family: inherit;
     display: flex;
     flex-direction: column;
@@ -108,8 +100,8 @@ const CookieWrapper = styled.div`
   }
 
   .link a {
-    font-size: 2vmax;
-    color: #ff0000;
+    font-size: 1.5vmax;
+    color: red;
     text-decoration: none;
   }
 
