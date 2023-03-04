@@ -18,7 +18,7 @@ export const GlobalStyle = styled.createGlobalStyle`
     background-repeat: no-repeat;
     background-size: cover;
     font-family: "Play";
-    color: rgba(255, 0, 0, 1);
+    color: red;
     background-color: rgb(24, 24, 24);
     margin: 0;
     padding: 0;
@@ -31,6 +31,7 @@ export const GlobalStyle = styled.createGlobalStyle`
     right: 0;
     overflow: auto;
     z-index: -1;
+    caret-color: transparent;
     --alert-color-warning: rgba(255, 140, 140, 0.8);
     --alert-text-warning: rgba(0, 0, 0, 1);
     --alert-color-message: rgba(255, 250, 130, 0.8);

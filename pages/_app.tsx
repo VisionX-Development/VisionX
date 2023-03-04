@@ -4,19 +4,22 @@ import Head from "next/head";
 import { StoreProvider } from "easy-peasy";
 import GlobalState from "../store/GlobalState";
 import { NextUIProvider } from "@nextui-org/react";
+import { Provider } from "next-auth/client";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <NextUIProvider>
-      <GlobalStyles>
-        <Head>
-          <title>VisionX - Webdevelopment</title>
-        </Head>
-        <StoreProvider store={GlobalState}>
-          <Component {...pageProps} />
-        </StoreProvider>
-      </GlobalStyles>
-    </NextUIProvider>
+    <Provider session={pageProps.session}>
+      <NextUIProvider>
+        <GlobalStyles>
+          <Head>
+            <title>VisionX</title>
+          </Head>
+          <StoreProvider store={GlobalState}>
+            <Component {...pageProps} />
+          </StoreProvider>
+        </GlobalStyles>
+      </NextUIProvider>
+    </Provider>
   );
 }
 

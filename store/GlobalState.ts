@@ -1,11 +1,12 @@
 import { createStore, action } from "easy-peasy";
 import { Action } from "easy-peasy";
 import { createTypedHooks } from "easy-peasy";
+import UserStore from "./UserState";
+import { UserStateModel } from "./UserState";
 
 interface GlobalStateModel {
-  //Auth State
-  isLoggedIn: boolean;
-  setIsLoggedIn: Action<GlobalStateModel, boolean>;
+  // User State
+  user: UserStateModel;
   // Cookie Consent
   cookieConsent: boolean;
   showCookieBanner: boolean;
@@ -17,11 +18,8 @@ interface GlobalStateModel {
 }
 
 const GlobalState = createStore<GlobalStateModel>({
-  //Auth State
-  isLoggedIn: false,
-  setIsLoggedIn: action((state, payload: boolean) => {
-    state.isLoggedIn = payload;
-  }),
+  // User State
+  user: UserStore,
 
   // Cookie Consent
   cookieConsent: false,
