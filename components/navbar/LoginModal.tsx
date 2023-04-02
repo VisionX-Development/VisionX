@@ -47,7 +47,6 @@ export const LoginModal: React.FC = () => {
       email: email,
       password: password,
     });
-
     if (result) {
       if (!result.error) {
         router.replace("/home");
@@ -57,7 +56,6 @@ export const LoginModal: React.FC = () => {
       }
     }
   };
-
   return (
     <Formik
       initialValues={initialValues}
