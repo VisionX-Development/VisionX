@@ -22,7 +22,7 @@ const Navbar: React.FC<{}> = () => {
   };
 
   const router = useRouter();
-  const thisPath: boolean = router.pathname === "/home";
+  const thisPath: boolean = router.pathname === "/dashboard";
 
   return (
     <NavMain>
@@ -31,11 +31,10 @@ const Navbar: React.FC<{}> = () => {
           <Image alt="logo" src={logo} layout="responsive" priority={true} />
         </Link>
       </ImageWraper>
-      {session && !thisPath && (
-        <MenueWrapper>
-          <Link href="/home">Home</Link>
-        </MenueWrapper>
-      )}
+      <MenueWrapper>
+        <Link href="/ueber">ÜBER VISIONX</Link>
+        {session && !thisPath && <Link href="/dashboard">DASHBOARD</Link>}
+      </MenueWrapper>
       <ImageWraper>
         {session ? (
           <Image
@@ -77,10 +76,18 @@ const NavMain = styled.div`
   z-index: 1;
   position: sticky;
   top: 0;
-  background-color: rgba(51, 51, 51, 0.6);
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 1);
+  background-color: rgba(51, 51, 51, 0.3);
   font-size: 1.8rem;
   width: 100vw;
+
+  a {
+    color: red;
+    text-decoration: none;
+    padding: 0.5rem;
+    :hover {
+      filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.6));
+    }
+  }
 
   // phone
   @media (max-width: 600px) {
@@ -104,7 +111,7 @@ const ImageWraper = styled.div`
   cursor: pointer;
 
   :hover {
-    filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.8));
+    filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.6));
   }
 `;
 
@@ -112,16 +119,7 @@ const MenueWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: end;
-  cursor: pointer;
-
-  a {
-    color: red;
-    text-decoration: none;
-    padding: 0.5rem 2rem 0.5rem 2rem;
-  }
-
-  :hover {
-    filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.2));
-  }
+  justify-content: space-between;
+  padding: 0 1rem 0 1rem;
+  font-size: 1.5rem;
 `;

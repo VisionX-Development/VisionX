@@ -8,6 +8,22 @@ import mongoose from "mongoose";
 export default NextAuth({
   session: {
     jwt: true,
+    maxAge: 24 * 60 * 60, // 24 hours
+  },
+  // jwt: {
+  //   secret: process.env.JWT_SECRET,
+  // },
+  callbacks: {
+    async jwt(token: any, user: any) {
+      if (user) {
+        token.role = user.role;
+      }
+      return token;
+    },
+    async session(session: any, token: any) {
+      session.user.role = token.role;
+      return session;
+    },
   },
   providers: [
     Providers.Credentials({
@@ -32,7 +48,11 @@ export default NextAuth({
             throw new Error("Das Passwort ist falsch!");
           }
           mongoose.connection.close();
-          return { email: user[0].email };
+          return {
+            email: user[0].email,
+            name: user[0].name,
+            role: user[0].role,
+          };
         } catch (error: any) {
           console.error({ QuerryError: error.message });
           throw new Error(error.message);

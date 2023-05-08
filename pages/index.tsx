@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import Logo from "../src/images/VisionX_Logo.svg";
 import Navbar from "../components/navbar/Navbar";
+import Footer from "../components/footer/Footer";
 import CookieBanner from "../components/CookieBanner";
 import AlertBox from "../components/alert";
 import { useStoreState, useStoreActions } from "../store/GlobalState";
@@ -47,9 +48,10 @@ const Index: NextPage = () => {
           />
         </ImageWraper>
         <div className="title">VisionX</div>
-        {showCookieBanner && <CookieBanner />}
-        {alertState.type !== "none" && <AlertBox />}
       </LandingPage>
+      {showCookieBanner && <CookieBanner />}
+      {alertState.type !== "none" && <AlertBox />}
+      <Footer />
     </>
   );
 };
@@ -63,7 +65,6 @@ const LandingPage = styled.div`
   align-items: center;
   color: #ff0000;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 1);
-  overflow: scroll;
 
   @media screen and (min-width: 100vh) {
     /* The width is greater than the height */

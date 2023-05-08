@@ -49,7 +49,7 @@ export const LoginModal: React.FC = () => {
     });
     if (result) {
       if (!result.error) {
-        router.replace("/home");
+        router.replace("/dashboard");
       } else {
         setAlert({ message: result.error, type: "warning" });
         setLoading(false);

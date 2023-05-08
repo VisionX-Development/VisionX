@@ -31,7 +31,7 @@ const CookieBanner = (): JSX.Element => {
     <CookieWrapper>
       <h1 data-testid="cookie warning"> Cookies verbessern die Darstellung</h1>
       <div className="link">
-        <Link href="/">Infos zum Datenschutz</Link>
+        <Link href="/datenschutz">Infos zum Datenschutz</Link>
       </div>
       <button onClick={handleCookieAccept}>Akzeptieren</button>
       <button onClick={handleCookieRejection}>Ablehnen</button>
@@ -57,7 +57,6 @@ const CookieWrapper = styled.div`
   position: sticky;
   bottom: 0;
   letter-spacing: 0.2rem;
-  width: 100vw;
 
   h1 {
     font-size: 2vmax;
@@ -70,7 +69,7 @@ const CookieWrapper = styled.div`
     border-radius: 10px;
     height: 4vmax;
     box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.6);
-    background: rgba(95, 95, 95, 0.3);
+    background: rgba(95, 95, 95, 0.2);
     color: red;
     font-size: 1.5vmax;
     font-family: inherit;
@@ -83,7 +82,6 @@ const CookieWrapper = styled.div`
 
     :active {
       outline: none;
-      padding: 1.2rem 0 0.8rem 0;
       box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.1) !important;
       text-shadow: 5px 5px 10px rgba(0, 0, 0, 0) !important;
     }
@@ -94,7 +92,7 @@ const CookieWrapper = styled.div`
 
     :hover {
       box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.1);
-      background: rgba(95, 95, 95, 0.6);
+      background: rgba(95, 95, 95, 0.5);
       cursor: pointer;
     }
   }

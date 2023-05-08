@@ -6,10 +6,13 @@ export const GlobalStyle = styled.createGlobalStyle`
     font-size: 1vmax;
     height: 100vh;
     width: 100vw;
+    align-content: center;
     align-items: center;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-items: center;
+    flex-wrap: nowrap;
     background: linear-gradient(
       170deg,
       rgb(68, 68, 68) 30%,
@@ -19,7 +22,7 @@ export const GlobalStyle = styled.createGlobalStyle`
     background-size: cover;
     font-family: "Play";
     color: red;
-    background-color: rgb(24, 24, 24);
+    background-color: (var(--background-color-theme));
     margin: 0;
     padding: 0;
     border: 0;
@@ -29,9 +32,10 @@ export const GlobalStyle = styled.createGlobalStyle`
     left: 0;
     bottom: 0;
     right: 0;
-    overflow: auto;
+    overflow: scroll !important;
     z-index: -1;
     caret-color: transparent;
+    --background-color-theme: rgba(24, 24, 24, 1);
     --alert-color-warning: rgba(255, 140, 140, 0.8);
     --alert-text-warning: rgba(0, 0, 0, 1);
     --alert-color-message: rgba(255, 250, 130, 0.8);
