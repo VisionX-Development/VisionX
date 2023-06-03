@@ -1,12 +1,9 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { useStoreActions } from "../store/GlobalState";
 import Cookies from "universal-cookie";
 
-const CookieBanner = (): JSX.Element => {
-  const setCookieConsent = useStoreActions((state) => state.setCookieConsent);
-
-  const setCookieBanner = useStoreActions((state) => state.setCookieBanner);
+const CookieBanner = (props: any): JSX.Element => {
+  const setCookieBanner = props.setCookieBanner;
 
   const setCookie = () => {
     //set and Accept_Cookies_VisionX Cookie
@@ -20,7 +17,6 @@ const CookieBanner = (): JSX.Element => {
   const handleCookieAccept = () => {
     setCookie();
     setCookieBanner(false);
-    setCookieConsent(true);
   };
 
   const handleCookieRejection = () => {

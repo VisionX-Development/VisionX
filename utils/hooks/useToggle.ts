@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-function useToggle(initialVal = false) {
+interface Toggle {
+  state: boolean;
+  toggle: () => void;
+}
+
+function useToggle(initialVal: boolean = false): Toggle {
   const [state, setState] = useState(initialVal);
   const toggle = () => {
     setState(!state);
   };
-  return [state, toggle];
+  return { state, toggle };
 }
 export default useToggle;

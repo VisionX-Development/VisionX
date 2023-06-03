@@ -1,4 +1,3 @@
-import React from "react";
 import Document, {
   Html,
   Head,
@@ -13,7 +12,6 @@ export default class MyDocument extends Document<any> {
   static async getInitialProps(ctx: DocumentContext) {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
-
     try {
       // wraps the collectStyles provider around our <App />.
       ctx.renderPage = () =>
@@ -52,8 +50,8 @@ export default class MyDocument extends Document<any> {
             url(https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap);
           </style>
         </Head>
+
         <body>
-          <div id="modal" />
           <Main />
           <NextScript />
         </body>

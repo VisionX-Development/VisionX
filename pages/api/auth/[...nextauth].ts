@@ -29,7 +29,13 @@ export default NextAuth({
     Providers.Credentials({
       async authorize(credentials: any) {
         try {
-          await connectDB();
+          let uri: string;
+          if (process.env.NODE_ENV === "development") {
+            uri = process.env.VISIONX_URI_DEV || "";
+          } else {
+            uri = process.env.VISIONX_URI_PRODUCTION || "";
+          }
+          await connectDB(uri);
 
           const user = await UserModel.find({ email: credentials.email });
 
@@ -49,12 +55,11 @@ export default NextAuth({
           }
           mongoose.connection.close();
           return {
-            email: user[0].email,
             name: user[0].name,
+            email: user[0].email,
             role: user[0].role,
           };
         } catch (error: any) {
-          console.error({ QuerryError: error.message });
           throw new Error(error.message);
         }
       },

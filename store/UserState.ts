@@ -4,9 +4,11 @@ import { Action } from "easy-peasy";
 export interface UserStateModel {
   isLoggedIn: boolean;
   setIsLoggedIn: Action<UserStateModel, boolean>;
-  userName?: string;
+  userName: string;
   setName: Action<UserStateModel, string>;
-  userRole?: string;
+  userEmail: string;
+  setEmail: Action<UserStateModel, string>;
+  userRole: string;
   setRole: Action<UserStateModel, string>;
 }
 
@@ -15,9 +17,15 @@ const UserStore = <UserStateModel>{
   setIsLoggedIn: action((state, payload: boolean) => {
     state.isLoggedIn = payload;
   }),
+  userName: "",
   setName: action((state, payload: string) => {
     state.userName = payload;
   }),
+  userEmail: "",
+  setEmail: action((state, payload: string) => {
+    state.userEmail = payload;
+  }),
+  userRole: "",
   setRole: action((state, payload: string) => {
     state.userRole = payload;
   }),

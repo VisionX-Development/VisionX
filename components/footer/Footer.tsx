@@ -20,12 +20,13 @@ const FooterMain = styled.div`
   justify-content: space-around;
   align-items: center;
   padding: 0.7rem 2rem 0.7rem 2rem;
-  z-index: 1;
+  z-index: 9;
   background-color: rgba(51, 51, 51, 0.3);
   font-size: 1.2rem;
   cursor: pointer;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   width: 100vw;
+  height: 5vh;
 
   a {
     color: rgba(255, 0, 0, 1);

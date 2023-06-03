@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { ReactElement } from "react";
 
-export const useModal = () => {
-  const [isShown, setIsShown] = useState<boolean>(false);
-  const toggle = () => setIsShown(!isShown);
+const useModal = (headerText: string, modalComponent: ReactElement) => {
   return {
-    isShown,
-    toggle,
+    modalIsOpen: true,
+    modalHeaderText: headerText,
+    modalContent: modalComponent,
   };
 };
+
+export default useModal;

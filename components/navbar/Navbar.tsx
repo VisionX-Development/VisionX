@@ -5,19 +5,26 @@ import log_out_icon from "../../src/images/log_out.svg";
 import logo from "../../src/images/VisionX_Logo.svg";
 import styled from "styled-components";
 import { Modal } from "../modal/Modal";
-import { useModal } from "../../utils/hooks/useModal";
-import { LoginModal } from "./LoginModal";
+import useToggle from "../../utils/hooks/useToggle";
+import { LoginModal } from "../modal/LoginModal";
 import { useSession } from "next-auth/client";
 import { signOut } from "next-auth/client";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useStoreActions } from "../../store/GlobalState";
 
 const Navbar: React.FC<{}> = () => {
-  const { isShown, toggle } = useModal();
+  const { state, toggle } = useToggle(false);
 
   const [session, loading] = useSession();
 
+  const setUserState = useStoreActions((state) => state.user);
+
   const handleSignOut = async () => {
+    setUserState.setIsLoggedIn(false);
+    setUserState.setName("");
+    setUserState.setRole("");
+    setUserState.setEmail("");
     signOut({ redirect: true });
   };
 
@@ -56,10 +63,10 @@ const Navbar: React.FC<{}> = () => {
         )}
       </ImageWraper>
       <Modal
-        isShown={isShown}
+        isShown={state}
         hide={toggle}
         headerText="Login"
-        modalContent={<LoginModal />}
+        modalContent={<LoginModal toggle={toggle} />}
       />
     </NavMain>
   );
@@ -73,7 +80,7 @@ const NavMain = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0.7rem 2rem 0.7rem 2rem;
-  z-index: 1;
+  z-index: 9;
   position: sticky;
   top: 0;
   background-color: rgba(51, 51, 51, 0.3);

@@ -7,11 +7,7 @@ import { UserStateModel } from "./UserState";
 interface GlobalStateModel {
   // User State
   user: UserStateModel;
-  // Cookie Consent
-  cookieConsent: boolean;
-  showCookieBanner: boolean;
-  setCookieConsent: Action<GlobalStateModel, boolean>;
-  setCookieBanner: Action<GlobalStateModel, boolean>;
+
   // Alert Banner
   alert: { message: string; type: string };
   setAlert: Action<GlobalStateModel, { message: string; type: string }>;
@@ -20,16 +16,6 @@ interface GlobalStateModel {
 const GlobalState = createStore<GlobalStateModel>({
   // User State
   user: UserStore,
-
-  // Cookie Consent
-  cookieConsent: false,
-  setCookieConsent: action((state, payload: boolean) => {
-    state.cookieConsent = payload;
-  }),
-  showCookieBanner: false,
-  setCookieBanner: action((state, payload: boolean) => {
-    state.showCookieBanner = payload;
-  }),
 
   // Alert Banner
   alert: { message: "no alert", type: "none" },

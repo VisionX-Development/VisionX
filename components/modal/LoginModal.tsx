@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import Image from "next/image";
 import spinner from "../../src/images/spinner.svg";
-//import { createUser } from "../../utils/auth/auth";
 
 interface MyFormValues {
   email: string;
@@ -17,28 +16,16 @@ interface MyFormValues {
 
 const SignInSchema = Yup.object().shape({
   password: Yup.string().required("Bitte geben Sie ein Passwort ein."),
-  // .matches(
-  //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{5,})/,
-  //   "Muss mindestens 5 Ziffern enthalten, ein Großbuchstabe, ein Kleinbuchstabe und ein Sonderzeichen."
-  // ),
   email: Yup.string()
     .email("Email ist ungültig. Bitte korrekte Email eingeben.")
     .required("Bitte geben Sie eine Email ein."),
 });
 
-export const LoginModal: React.FC = () => {
+export const LoginModal = (props: any): JSX.Element => {
   const initialValues: MyFormValues = { email: "", password: "" };
   const setAlert = useStoreActions((state) => state.setAlert);
   const router = useRouter();
   const [isLoading, setLoading] = useState(false);
-
-  // const handleCreateUser = async (email: string, password: string) => {
-  //   try {
-  //     await createUser(email, password);
-  //   } catch (error: any) {
-  //     setAlert({ message: error.message, type: "warning" });
-  //   }
-  // };
 
   const handleSignIn = async (email: string, password: string) => {
     setLoading(true);
@@ -50,6 +37,8 @@ export const LoginModal: React.FC = () => {
     if (result) {
       if (!result.error) {
         router.replace("/dashboard");
+        setLoading(false);
+        props.toggle();
       } else {
         setAlert({ message: result.error, type: "warning" });
         setLoading(false);
@@ -111,7 +100,7 @@ export const LoginModal: React.FC = () => {
               <Button
                 type="submit"
                 size="xl"
-                css={{ width: "100%", fontSize: "2rem" }}
+                css={{ width: "100%", fontSize: "2rem", minWidth: "unset" }}
               >
                 Login
               </Button>
@@ -132,11 +121,11 @@ const FormWrapper = styled.div`
 
   input {
     width: 100%;
-    height: 40px;
+    height: 3rem;
     border-radius: 5px;
     padding: 7px;
     color: black;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .error-message {

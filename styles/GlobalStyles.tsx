@@ -4,13 +4,11 @@ export const GlobalStyle = styled.createGlobalStyle`
   html,
   body {
     font-size: 1vmax;
-    height: 100vh;
-    width: 100vw;
     align-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     justify-items: center;
     flex-wrap: nowrap;
     background: linear-gradient(
@@ -27,13 +25,12 @@ export const GlobalStyle = styled.createGlobalStyle`
     padding: 0;
     border: 0;
     outline: 0;
-    position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
     overflow: scroll !important;
-    z-index: -1;
+    z-index: -999;
     caret-color: transparent;
     --background-color-theme: rgba(24, 24, 24, 1);
     --alert-color-warning: rgba(255, 140, 140, 0.8);
@@ -61,6 +58,9 @@ export const GlobalStyle = styled.createGlobalStyle`
     );
   }
 
+  /* The width is greater than the height */
+  @media screen and (min-width: 100vh) {
+  }
   /* phone */
   @media (max-width: 600px) {
   }
@@ -74,6 +74,8 @@ export const GlobalStyle = styled.createGlobalStyle`
   @media (max-width: 1800px) {
   }
   /* >1800px = wide screen */
+  @media (min-width: 1801px) {
+  }
 `;
 
 const BasicLayout = ({ children }: { children: unknown }) => {

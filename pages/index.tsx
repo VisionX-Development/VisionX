@@ -3,56 +3,19 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import Logo from "../src/images/VisionX_Logo.svg";
-import Navbar from "../components/navbar/Navbar";
-import Footer from "../components/footer/Footer";
-import CookieBanner from "../components/CookieBanner";
-import AlertBox from "../components/alert";
-import { useStoreState, useStoreActions } from "../store/GlobalState";
-import Cookies from "universal-cookie";
 
 const Index: NextPage = () => {
-  const showCookieBanner = useStoreState((state) => state.showCookieBanner);
-  const setCookieBanner = useStoreActions((state) => state.setCookieBanner);
-  const alertState = useStoreState((state) => state.alert);
-  const setAlertState = useStoreActions((state) => state.setAlert);
-
-  const checkCookie = (): boolean => {
-    const cookies = new Cookies();
-    const hasCookie = cookies.get("VisionX_Privacy");
-    return hasCookie;
-  };
-
-  useEffect(() => {
-    !checkCookie() && !showCookieBanner && setCookieBanner(true);
-  }, []);
-
-  useEffect(() => {
-    if (alertState.type !== "none") {
-      const timer = setTimeout(() => {
-        setAlertState({ type: "none", message: "no alert" });
-      }, 4000);
-    }
-  }, [alertState]);
-
   return (
-    <>
-      <LandingPage>
-        <Navbar />
-        <ImageWraper>
-          <Image
-            alt="Logo"
-            src={Logo}
-            width={500}
-            height={500}
-            priority={true}
-          />
-        </ImageWraper>
-        <div className="title">VisionX</div>
-      </LandingPage>
-      {showCookieBanner && <CookieBanner />}
-      {alertState.type !== "none" && <AlertBox />}
-      <Footer />
-    </>
+    <LandingPage>
+      <ImageWraper>
+        <Image alt="Logo" src={Logo} width={500} height={500} priority={true} />
+      </ImageWraper>
+
+      <p className="title">
+        <strong className="capital">V</strong>ision
+        <strong className="capital">X</strong>
+      </p>
+    </LandingPage>
   );
 };
 
@@ -66,38 +29,30 @@ const LandingPage = styled.div`
   color: #ff0000;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 1);
 
-  @media screen and (min-width: 100vh) {
-    /* The width is greater than the height */
-  }
-
   .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     font-size: 8vmax;
     letter-spacing: 2.5rem;
+    font-family: inherit;
+  }
+
+  .capital {
+    font-size: 8vmax;
+    font-weight: bold;
   }
 
   // phone
-  @media (max-width: 600px) {
+  @media (max-width: 350px) {
     .title {
-      font-size: 7vmax;
-      letter-spacing: 2.5rem;
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      font-size: 5vmax;
+      letter-spacing: 0rem;
     }
   }
-
-  // tablet portrait
-  @media (min-width: 601px) and (max-width: 900px) {
-    .title {
-      font-size: 12vmax;
-      letter-spacing: 2.5rem;
-    }
-  }
-
-  // tablet landscape
-  @media (min-width: 1200px) {
-  }
-  // desktop
-  @media (max-width: 1800px) {
-  }
-  // >1800px = wide screen
 `;
 
 const ImageWraper = styled.div`
