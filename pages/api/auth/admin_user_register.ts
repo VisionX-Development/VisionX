@@ -36,8 +36,6 @@ export default async function register_admin(
 
     const existingUser = await UserModel.find({ email: email });
 
-    console.log(existingUser);
-
     if (existingUser.length !== 0) {
       mongoose.connection.close();
       throw new Error("Benutzer existiert bereits!");
