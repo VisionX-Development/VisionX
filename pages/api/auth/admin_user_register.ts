@@ -28,7 +28,9 @@ export default async function register_admin(
     const validateEmail = validator.isEmail(email);
 
     if (!validatePassword || !validateEmail) {
-      res.status(422).json({ message: "Ungültige Email oder Passwort!" });
+      res
+        .status(422)
+        .json({ message: "Ungültige Email oder Passwort!", type: "warning" });
       return;
     }
 
@@ -61,7 +63,6 @@ export default async function register_admin(
       .json({ message: "Benutzer erfolgreich angelegt.", type: "success" });
     mongoose.connection.close();
   } catch (error: any) {
-    res.status(400).json(error);
     throw new Error(error.message);
   }
 }
