@@ -16,7 +16,8 @@ export default async function register_admin(
   }
   try {
     const data = req.body;
-    const { name, email, password, app, database } = data;
+    const { name, email, password, role, app, database } = data;
+
     const validatePassword = validator.isStrongPassword(password, {
       minLength: 5,
       minLowercase: 1,
@@ -33,7 +34,6 @@ export default async function register_admin(
 
     const uri = await getDatabaseUri(app, database);
     await connectDB(uri);
-
     const existingUser = await UserModel.find({ email: email });
 
     if (existingUser.length !== 0) {
@@ -47,7 +47,7 @@ export default async function register_admin(
       name: name,
       email: email,
       password: hashedPassword,
-      role: "user",
+      role: role,
     });
 
     res
