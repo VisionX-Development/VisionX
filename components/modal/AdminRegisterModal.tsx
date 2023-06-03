@@ -63,8 +63,10 @@ export const AdminRegisterModal: React.FC = () => {
         database
       );
       result && setLoading(false);
+      console.log(result);
       setAlertState(result);
     } catch (error: any) {
+      console.log(error);
       setAlertState({ message: error.message, type: "warning" });
       setLoading(false);
     }

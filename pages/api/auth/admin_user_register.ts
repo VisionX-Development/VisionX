@@ -28,10 +28,7 @@ export default async function register_admin(
     const validateEmail = validator.isEmail(email);
 
     if (!validatePassword || !validateEmail) {
-      res
-        .status(422)
-        .json({ message: "Ungültige Email oder Passwort!", type: "warning" });
-      return;
+      throw new Error("Ungültige Email oder Passwort!");
     }
 
     const uri = await getDatabaseUri(app, database);
@@ -42,9 +39,6 @@ export default async function register_admin(
     console.log(existingUser);
 
     if (existingUser.length !== 0) {
-      res
-        .status(422)
-        .json({ message: "Benutzer existiert bereits.", type: "warning" });
       mongoose.connection.close();
       throw new Error("Benutzer existiert bereits!");
     }
@@ -63,6 +57,6 @@ export default async function register_admin(
       .json({ message: "Benutzer erfolgreich angelegt.", type: "success" });
     mongoose.connection.close();
   } catch (error: any) {
-    throw new Error(error.message);
+    res.status(422).json({ message: error.message, type: "warning" });
   }
 }
