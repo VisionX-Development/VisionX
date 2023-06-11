@@ -2,7 +2,7 @@ import type { AppProps } from "next/app";
 import GlobalStyles from "../styles/GlobalStyles";
 import Head from "next/head";
 import { NextUIProvider } from "@nextui-org/react";
-import { Provider } from "next-auth/client";
+import { SessionProvider } from "next-auth/react";
 import AlertBox from "../components/alert";
 import CookieBanner from "../components/CookieBanner";
 import Cookies from "universal-cookie";
@@ -13,8 +13,14 @@ import { Modal } from "../components/modal/Modal";
 import useToggle from "../utils/hooks/useToggle";
 import { StoreProvider } from "easy-peasy";
 import GlobalState from "../store/GlobalState";
+import { Session } from "next-auth";
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps<{
+  session: Session;
+}>) {
   const [showCookieBanner, setCookieBanner] = useState(false);
 
   const [modalContentObject, setModalContant] = useState({
@@ -40,7 +46,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <Provider session={pageProps.session}>
+    <SessionProvider session={session}>
       <StoreProvider store={GlobalState}>
         <NextUIProvider>
           <GlobalStyles>
@@ -63,8 +69,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           </GlobalStyles>
         </NextUIProvider>
       </StoreProvider>
-    </Provider>
+    </SessionProvider>
   );
 }
-
-export default MyApp;

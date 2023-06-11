@@ -1,6 +1,5 @@
 import { Model, Schema } from "mongoose";
 import createModel from "../creatModels";
-import { ObjectId } from "mongodb";
 
 interface IUser {
   email: string;

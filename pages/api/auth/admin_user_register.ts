@@ -4,17 +4,24 @@ import UserModel from "../../../db/lib/models/user.model";
 import validator from "validator";
 import { hashPassword, getDatabaseUri } from "../../../utils/auth/auth";
 import mongoose from "mongoose";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "./[...nextauth]";
 
-// CAVE: Diese register_admin Funktion ist nur für den Admin gedacht, der neue User anlegen kann. Er kann unabhängig von der Umgebung (Development oder Produktion) beliebig entscheiden in welche App und welche Datenbank ein neuer User gespeichert werden soll. Für die ggf. eigenständige Registrierung von Usern ist eine neue register_user Funktion nötig die die Umgebung abfragt und, je nach App die entsprechende Datenbank findet.
+// CAVE: Diese admin_user_register Funktion ist nur für den Admin gedacht, der neue User anlegen kann. Er kann unabhängig von der Umgebung (Development oder Produktion) beliebig entscheiden in welche App und welche Datenbank ein neuer User gespeichert werden soll. Für die ggf. eigenständige Registrierung von Usern ist eine neue register_user Funktion nötig die die Umgebung abfragt und, je nach App die entsprechende Datenbank findet.
 
-export default async function register_admin(
+export default async function admin_user_register(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const session = await getServerSession(req, res, authOptions);
   if (req.method !== "POST") {
     return;
   }
   try {
+    if (!session) {
+      throw new Error("Kein Benutzer angemeldet! Bitte melden Sie sich an.");
+    }
+
     const data = req.body;
     const { name, email, password, role, app, database } = data;
 
@@ -33,6 +40,7 @@ export default async function register_admin(
     }
 
     const uri = await getDatabaseUri(app, database);
+
     await connectDB(uri);
     const existingUser = await UserModel.find({ email: email });
 

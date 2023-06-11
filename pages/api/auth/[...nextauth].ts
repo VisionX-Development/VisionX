@@ -1,32 +1,18 @@
-import NextAuth from "next-auth";
-import Providers from "next-auth/providers";
 import { verifyPassword } from "../../../utils/auth/auth";
 import { connectDB } from "../../../db/connectDB";
 import UserModel from "../../../db/lib/models/user.model";
 import mongoose from "mongoose";
 
-export default NextAuth({
-  session: {
-    jwt: true,
-    maxAge: 24 * 60 * 60, // 24 hours
-  },
-  // jwt: {
-  //   secret: process.env.JWT_SECRET,
-  // },
-  callbacks: {
-    async jwt(token: any, user: any) {
-      if (user) {
-        token.role = user.role;
-      }
-      return token;
-    },
-    async session(session: any, token: any) {
-      session.user.role = token.role;
-      return session;
-    },
-  },
+import { NextApiRequest, NextApiResponse } from "next";
+
+import NextAuth, { NextAuthOptions } from "next-auth";
+
+import CredentialsProvider from "next-auth/providers/credentials";
+
+export const authOptions: NextAuthOptions = {
   providers: [
-    Providers.Credentials({
+    CredentialsProvider({
+      // @ts-ignore
       async authorize(credentials: any) {
         try {
           let uri: string;
@@ -65,4 +51,26 @@ export default NextAuth({
       },
     }),
   ],
-});
+  session: {
+    strategy: "jwt",
+    maxAge: 24 * 60 * 60, // 24 hours
+  },
+  jwt: {
+    secret: process.env.JWT_SIGNING_PRIVATE_KEY,
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.role = user.role;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      session.user.role = token.role;
+      return session;
+    },
+  },
+};
+
+export default (req: NextApiRequest, res: NextApiResponse) =>
+  NextAuth(req, res, authOptions);

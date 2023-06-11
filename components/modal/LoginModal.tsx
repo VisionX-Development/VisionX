@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Spacer, Button } from "@nextui-org/react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { signIn } from "next-auth/client";
+import { signIn } from "next-auth/react";
 import { useStoreActions } from "../../store/GlobalState";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -28,21 +28,26 @@ export const LoginModal = (props: any): JSX.Element => {
   const [isLoading, setLoading] = useState(false);
 
   const handleSignIn = async (email: string, password: string) => {
-    setLoading(true);
-    const result = await signIn("credentials", {
-      redirect: false,
-      email: email,
-      password: password,
-    });
-    if (result) {
-      if (!result.error) {
-        router.replace("/dashboard");
-        setLoading(false);
-        props.toggle();
-      } else {
-        setAlert({ message: result.error, type: "warning" });
-        setLoading(false);
+    try {
+      setLoading(true);
+      const result = await signIn("credentials", {
+        redirect: false,
+        email: email,
+        password: password,
+      });
+      if (result) {
+        if (!result.error) {
+          router.replace("/dashboard");
+          setLoading(false);
+          props.toggle();
+        } else {
+          setAlert({ message: result.error, type: "warning" });
+          setLoading(false);
+        }
       }
+    } catch (error: any) {
+      setAlert({ message: error.message, type: "warning" });
+      setLoading(false);
     }
   };
   return (

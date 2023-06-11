@@ -7,8 +7,8 @@ import styled from "styled-components";
 import { Modal } from "../modal/Modal";
 import useToggle from "../../utils/hooks/useToggle";
 import { LoginModal } from "../modal/LoginModal";
-import { useSession } from "next-auth/client";
-import { signOut } from "next-auth/client";
+import { useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useStoreActions } from "../../store/GlobalState";
@@ -16,12 +16,11 @@ import { useStoreActions } from "../../store/GlobalState";
 const Navbar: React.FC<{}> = () => {
   const { state, toggle } = useToggle(false);
 
-  const [session, loading] = useSession();
+  const { data: session, status } = useSession();
 
   const setUserState = useStoreActions((state) => state.user);
 
   const handleSignOut = async () => {
-    setUserState.setIsLoggedIn(false);
     setUserState.setName("");
     setUserState.setRole("");
     setUserState.setEmail("");

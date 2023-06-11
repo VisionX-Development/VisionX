@@ -14,13 +14,13 @@ export const GlobalStyle = styled.createGlobalStyle`
     background: linear-gradient(
       170deg,
       rgb(68, 68, 68) 30%,
-      rgb(24, 24, 24) 80%
+      var(--background-color-theme) 80%
     );
     background-repeat: no-repeat;
     background-size: cover;
     font-family: "Play";
     color: red;
-    background-color: (var(--background-color-theme));
+    background-color: var(--background-color-theme);
     margin: 0;
     padding: 0;
     border: 0;

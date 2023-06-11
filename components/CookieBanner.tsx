@@ -48,9 +48,9 @@ const CookieWrapper = styled.div`
   text-align: center;
   color: red;
   text-decoration: none;
-  margin: 1vmax;
-  z-index: 1;
-  position: sticky;
+  z-index: 9;
+  position: fixed;
+  width: 100vw;
   bottom: 0;
   letter-spacing: 0.2rem;
 

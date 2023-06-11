@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import { useEffect } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import Logo from "../src/images/VisionX_Logo.svg";
