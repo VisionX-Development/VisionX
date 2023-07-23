@@ -2,10 +2,10 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { connectDB } from "../../../db/connectDB";
 import UserModel from "../../../db/lib/models/user.model";
 import validator from "validator";
-import { hashPassword, getDatabaseUri } from "../../../utils/auth/auth";
+import { hashPassword, getDatabaseUri } from "../../../utils/api/auth";
 import mongoose from "mongoose";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "./[...nextauth]";
+import { authOptions } from "../auth/[...nextauth]";
 
 // CAVE: Diese admin_user_register Funktion ist nur für den Admin gedacht, der neue User anlegen kann. Er kann unabhängig von der Umgebung (Development oder Produktion) beliebig entscheiden in welche App und welche Datenbank ein neuer User gespeichert werden soll. Für die ggf. eigenständige Registrierung von Usern ist eine neue register_user Funktion nötig die die Umgebung abfragt und, je nach App die entsprechende Datenbank findet.
 

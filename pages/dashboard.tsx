@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Spacer, Button } from "@nextui-org/react";
 import useModal from "../utils/hooks/useModal";
 import { AdminRegisterModal } from "../components/modal/AdminRegisterModal";
+import { UserUpdateModal } from "../components/modal/UserUpdateModal";
 import { useStoreState, useStoreActions } from "../store/GlobalState";
 import Loading from "../components/Loading";
 
@@ -25,6 +26,11 @@ const Dashboard: NextPage = (props: any) => {
     props.setModalContent(modal);
   };
 
+  const setUserUpdateModal = () => {
+    const modal = useModal("Benutzer- Daten ändern", <UserUpdateModal />);
+    props.setModalContent(modal);
+  };
+
   if (status === "loading" || !session) return <Loading />;
 
   return (
@@ -39,6 +45,10 @@ const Dashboard: NextPage = (props: any) => {
         <div>Email: {email}</div>
         <div>Role: {role}</div>
       </UserInformation>
+      <Spacer y={2} />
+      <ButtonWrapper>
+        <Button onPress={setUserUpdateModal}>Daten bearbeiten</Button>
+      </ButtonWrapper>
       <Spacer y={2} />
       {role === "admin" && (
         <ButtonWrapper>

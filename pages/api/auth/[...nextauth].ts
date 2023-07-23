@@ -1,4 +1,4 @@
-import { verifyPassword } from "../../../utils/auth/auth";
+import { verifyPassword } from "../../../utils/api/auth";
 import { connectDB } from "../../../db/connectDB";
 import UserModel from "../../../db/lib/models/user.model";
 import mongoose from "mongoose";

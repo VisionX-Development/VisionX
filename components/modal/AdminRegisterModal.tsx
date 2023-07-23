@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { useState } from "react";
 import Image from "next/image";
 import spinner from "../../src/images/spinner.svg";
-import { createAdminUser } from "../../utils/auth/auth";
+import { createAdminUser } from "../../utils/api/user";
 import { useStoreState, useStoreActions } from "../../store/GlobalState";
 
 interface MyFormValues {

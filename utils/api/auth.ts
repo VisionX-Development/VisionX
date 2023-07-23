@@ -32,24 +32,3 @@ export async function getDatabaseUri(
   }
   return "";
 }
-
-export async function createAdminUser(
-  name: string,
-  email: string,
-  password: string,
-  role: string,
-  app: string,
-  database: string
-) {
-  const response = await fetch("/api/auth/admin_user_register", {
-    method: "POST",
-    body: JSON.stringify({ name, email, password, role, app, database }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  const data = await response.json();
-
-  return data;
-}
