@@ -53,12 +53,7 @@ export const UserUpdateModal: React.FC = () => {
   ) => {
     try {
       setLoading(true);
-      const result = await changeUserData(
-        new_name,
-        new_email,
-        old_password,
-        new_password
-      );
+      const result = await changeUserData(new_email, old_password);
       result && setLoading(false);
       setAlertState(result);
     } catch (error: any) {
