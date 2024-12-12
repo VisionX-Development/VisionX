@@ -4,6 +4,7 @@ import styled from "styled-components";
 import FocusLock from "react-focus-lock";
 import close_icon from "../../src/images/close_white.svg";
 import Image from "next/image";
+import { Spacer, Button } from "@nextui-org/react";
 
 export interface ModalProps {
   isShown: boolean;
@@ -59,6 +60,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
                 data-dismiss="modal"
                 aria-label="Close"
                 onClick={hide}
+                id="modal_close_button"
               >
                 <Image
                   alt="close_icon"

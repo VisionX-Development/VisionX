@@ -7,6 +7,9 @@ import Image from "next/image";
 import spinner from "../../src/images/spinner.svg";
 import { changeUserData } from "../../utils/api/user";
 import { useStoreState, useStoreActions } from "../../store/GlobalState";
+import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import { set } from "mongoose";
 
 interface MyFormValues {
   new_name: string;
@@ -19,6 +22,11 @@ const UserUpdateSchema = Yup.object().shape({
   ),
 });
 
+const clickOnCloseButton = () => {
+  const modalCloseButton = document.getElementById("modal_close_button");
+  modalCloseButton?.click();
+};
+
 export const UserUpdateModal: React.FC = () => {
   const initialValues: MyFormValues = {
     new_name: "",
@@ -29,15 +37,41 @@ export const UserUpdateModal: React.FC = () => {
 
   const { userName, userEmail } = useStoreState((state: any) => state.user);
 
+  const setUserState = useStoreActions((state) => state.user);
+
   const [isLoading, setLoading] = useState(false);
+
+  const { data: session, status, update } = useSession();
+
+  if (status !== "authenticated") return null;
 
   const handUpdateUser = async (new_name: string, new_email: string) => {
     try {
-      // setLoading(true);
-      console.log(new_name, new_email);
-      // const result = await changeUserData(new_name, new_email);
-      // result && setLoading(false);
-      // setAlertState(result);
+      setLoading(true);
+      if (new_name === "" && new_email === "") {
+        throw new Error(
+          "Bitte fülle mindestens ein Feld aus oder wähle Abbrechen."
+        );
+      }
+
+      if (new_name === "") {
+        new_name = userName;
+      }
+      if (new_email === "") {
+        new_email = userEmail;
+      }
+
+      const result = await changeUserData(new_name, new_email);
+
+      setAlertState(result);
+
+      if (result.type === "success") {
+        clickOnCloseButton();
+        setUserState.setName(new_name);
+        setUserState.setEmail(new_email);
+      }
+
+      setLoading(false);
     } catch (error: any) {
       setAlertState({ message: error.message, type: "warning" });
       setLoading(false);
@@ -87,7 +121,6 @@ export const UserUpdateModal: React.FC = () => {
                 size="xl"
                 fullWidth={true}
               />
-
               <ErrorMessage
                 name="new_email"
                 component="div"
@@ -103,7 +136,11 @@ export const UserUpdateModal: React.FC = () => {
                 Benutzer Daten speichern
               </Button>
               <Spacer />
-              <Button size="xl" css={{ width: "100%", fontSize: "2rem" }}>
+              <Button
+                onPressStart={clickOnCloseButton}
+                size="xl"
+                css={{ width: "100%", fontSize: "2rem" }}
+              >
                 Abbrechen
               </Button>
             </Form>

@@ -8,7 +8,7 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "../auth/[...nextauth]";
 import { env } from "process";
 
-export default async function user_put(
+export default async function user_patch(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -43,11 +43,13 @@ export default async function user_put(
 
     await connectDB(uri);
 
-    const existingUser = await UserModel.find({ email: new_email });
+    if (new_email !== old_email) {
+      const existingUser = await UserModel.find({ email: new_email });
 
-    if (existingUser.length !== 0) {
-      mongoose.connection.close();
-      throw new Error("E-Mail existiert bereits!");
+      if (existingUser.length !== 0) {
+        mongoose.connection.close();
+        throw new Error("E-Mail existiert bereits!");
+      }
     }
 
     await UserModel.updateOne(

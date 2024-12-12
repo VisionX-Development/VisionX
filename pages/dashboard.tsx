@@ -7,19 +7,26 @@ import { AdminRegisterModal } from "../components/modal/AdminRegisterModal";
 import { UserUpdateModal } from "../components/modal/UserUpdateModal";
 import { useStoreState, useStoreActions } from "../store/GlobalState";
 import Loading from "../components/Loading";
+import { useEffect } from "react";
 
 const Dashboard: NextPage = (props: any) => {
-  const { data: session, status } = useSession({ required: true });
-
-  const name = session?.user.name || "";
-  const role = session?.user.role || "";
-  const email = session?.user.email || "";
-
+  const { data: session, status, update } = useSession({ required: true });
   const setUserState = useStoreActions((state) => state.user);
+  const { userName, userEmail, userRole } = useStoreState(
+    (state) => state.user
+  );
 
-  setUserState.setName(name);
-  setUserState.setEmail(email);
-  setUserState.setRole(role);
+  let session_name, session_email, session_role;
+
+  session_name = session?.user.name || "";
+  session_role = session?.user.role || "";
+  session_email = session?.user.email || "";
+
+  userName === "" && setUserState.setName(session_name);
+  userEmail === "" && setUserState.setEmail(session_email);
+  userRole === "" && setUserState.setRole(session_role);
+
+  console.log("session: ", session);
 
   const setAdminRegisterModal = () => {
     const modal = useModal("Neuen User anlegen", <AdminRegisterModal />);
@@ -36,21 +43,21 @@ const Dashboard: NextPage = (props: any) => {
   return (
     <DashboardWrapper>
       <TitleWrapper>
-        <div className="title">Dashboard von {name}</div>
+        <div className="title">Dashboard von {userName}</div>
       </TitleWrapper>
       <Spacer y={2} />
       <div style={{ fontSize: "3rem" }}>Deine Daten:</div>
       <UserInformation>
-        <div>Name: {name}</div>
-        <div>Email: {email}</div>
-        <div>Role: {role}</div>
+        <div>Name: {userName}</div>
+        <div>Email: {userEmail}</div>
+        <div>Role: {userRole}</div>
       </UserInformation>
       <Spacer y={2} />
       <ButtonWrapper>
         <Button onPress={setUserUpdateModal}>Daten bearbeiten</Button>
       </ButtonWrapper>
       <Spacer y={2} />
-      {role === "admin" && (
+      {userRole === "admin" && (
         <ButtonWrapper>
           <Button onPress={setAdminRegisterModal}>Neuer User</Button>
         </ButtonWrapper>
