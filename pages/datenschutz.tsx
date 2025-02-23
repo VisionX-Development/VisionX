@@ -14,7 +14,7 @@ const PrivacyStatment: React.FC<{}> = () => {
         dieser Internetseiten ist grundsätzlich ohne Eingabe personenbezogener
         Daten möglich. Sofern Sie besondere Funktionen z.B. im Rahmen von
         Web-Applikationen wie z.B. {""}
-        <strong>"STAR.VISIONX.DEV"</strong> in Anspruch nehmen möchten, ist eine
+        <strong>"RAD.REPORT"</strong> in Anspruch nehmen möchten, ist eine
         Verarbeitung personenbezogener Daten u.a. zur Registrierung und
         Zuordnung einer Benutzeroberfläche erforderlich. Ist die Verarbeitung
         personenbezogener Daten erforderlich und besteht für eine solche
@@ -49,7 +49,12 @@ const PrivacyStatment: React.FC<{}> = () => {
         <br />
         Inhaber der Domain: M. Hübner
         <br />
-        Kontakt: m.huebner(@)visionx.dev
+        <p style={{ fontSize: "1.3rem", textAlign: "left" }}>
+          <span style={{ visibility: "hidden" }} aria-hidden="true">
+            {/* PLEASE GO AWAY! */}
+          </span>
+          Kontakt: info{/*afdasdf*/}@{/*sdfjsdhfkjypcs*/}visionx.dev
+        </p>
       </p>
 
       <h2>Begriffsbestimmungen</h2>

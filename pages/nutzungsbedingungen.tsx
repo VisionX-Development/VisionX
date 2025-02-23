@@ -10,9 +10,14 @@ export default function Terms() {
       <p>
         <strong>VISIONX.DEV</strong>
         <br />
-        Inhaber der Domain und Betreiber: M. Hübner
+        Inhaber der Domain: M. Hübner
         <br />
-        Kontakt: m.huebner(@)visionx.dev
+        <p style={{ fontSize: "1.3rem", textAlign: "left" }}>
+          <span style={{ visibility: "hidden" }} aria-hidden="true">
+            {/* PLEASE GO AWAY! */}
+          </span>
+          Kontakt: info{/*afdasdf*/}@{/*sdfjsdhfkjypcs*/}visionx.dev
+        </p>
       </p>
       <h1>Nutzungsbedingungen</h1>
       <h2>Haftungsausschluss</h2>
@@ -24,19 +29,20 @@ export default function Terms() {
       </p>
       <p>
         Die Betreibung und Betreuung der Webseite VISIONX.DEV sowie weitere
-        damit ggf. verbundener Web-Applikationen erfolgt ausschließlich privat
-        und ohne gewerblichen Nutzen oder Gewinnerziehlungsabsicht. Die Nutzung
-        erfolgt freiwillig. Es besteht keine Gewähr auf Funktionalität oder
-        Erreichbarkeit der Webseite VISIONX.DEV und deren verbundenen
-        Web-Applikationen. Der Betreiber von VISIONX.DEV behält sich vor, die
-        Webseite VISIONX.DEV und deren verbundenen Web-Applikationen jederzeit
-        ohne Ankündigung zu verändern oder einzustellen.
+        damit ggf. verbundener Web-Applikationen (wie z.B. RAD.REPORT) erfolgt
+        ausschließlich privat und ohne gewerblichen Nutzen oder
+        Gewinnerziehlungsabsicht. Die Nutzung erfolgt freiwillig. Es besteht
+        keine Gewähr auf Funktionalität oder Erreichbarkeit der Webseite
+        VISIONX.DEV und deren verbundenen Web-Applikationen (z.B. RAD.REPORT).
+        Der Betreiber von VISIONX.DEV behält sich vor, die Webseite VISIONX.DEV
+        und deren verbundenen Web-Applikationen jederzeit ohne Ankündigung zu
+        verändern oder einzustellen.
       </p>
       <p>
         Für die Erstellung von Web-Applikationen oder Webseiten wird 'Open
-        Source'-Software (z.B. Node.js) verwendet, deren Verwendung im Rahmen
-        einer 'Open-Source'-Lizenz frei ist und keiner gesonderten Erwähnung
-        bedarf (z.B. im Rahmen einer&nbsp;
+        Source'-Software (z.B. Node.js, Next.js) verwendet, deren Verwendung im
+        Rahmen einer 'Open-Source'-Lizenz frei ist und keiner gesonderten
+        Erwähnung bedarf (z.B. im Rahmen einer&nbsp;
         <Link href="https://de.wikipedia.org/wiki/MIT-Lizenz">
           "MIT-Lizenz"
         </Link>
@@ -45,10 +51,7 @@ export default function Terms() {
       <p>
         Wird Bildmaterial verwendet, dann ebenfalls nur wenn die Bildrechte beim
         Inhaber der Domain liegen oder diese unter einer freien Lizenz beliebig
-        verwendet werden darf, auch ohne gesonderte Nennung der Urheber
-        (z.B.&nbsp;
-        <Link href="https://unsplash.com/license">"Unsplash.com"</Link>
-        ).
+        verwendet werden darf, auch ohne gesonderte Nennung der Urheber .
       </p>
       <h2>Regulatorische Hinweise</h2>
       <p>
@@ -68,17 +71,17 @@ export default function Terms() {
         Zuwiederhandlung zu löschen.
       </p>
       <p>
-        Die Webseite VISIONX.DEV und deren verbundenen Web-Applikationen stehen
-        für eine freie und offene Weltanschauung sowie einen respektvollen
-        Umgang miteinander. VISIONX.DEV erkennt die Gleichberechtigung aller
-        Menschen an, unabhängig von Geschlecht oder gefühlter
-        Geschlechtszugehörigkeit, sexueler Neigung, Alter, Ursprung, politischer
-        Gesinnung und Meinung. Alle Inhalte die individuelle Grundrechte und
-        Freiheit in diesem Sinne unterdrücken sowie Inhalte gewalttätiger,
-        kriminalistischer, rassistischer oder unsittlicher Art, sind nicht
-        gestattet und werden gelöscht. Der Betreiber von VISIONX.DEV behält sich
-        vor, Nutzer, die gegen diese Regeln verstoßen, zu sperren und ggf.
-        rechtliche Schritte einzuleiten.
+        Die Webseite VISIONX.DEV und deren verbundenen Web-Applikationen wie
+        z.B. RAD.REPORT stehen für eine freie und offene Weltanschauung sowie
+        einen respektvollen Umgang miteinander. VISIONX.DEV erkennt die
+        Gleichberechtigung aller Menschen an, unabhängig von Geschlecht oder
+        gefühlter Geschlechtszugehörigkeit, sexueler Neigung, Alter, Ursprung,
+        politischer Gesinnung und Meinung. Alle Inhalte die individuelle
+        Grundrechte und Freiheit in diesem Sinne unterdrücken sowie Inhalte
+        gewalttätiger, kriminalistischer, rassistischer oder unsittlicher Art,
+        sind nicht gestattet und werden gelöscht. Der Betreiber von VISIONX.DEV
+        behält sich vor, Nutzer, die gegen diese Regeln verstoßen, zu sperren
+        und ggf. rechtliche Schritte einzuleiten.
       </p>
       <h2>Hinweis zu medizinischen Inhalten</h2>
       <p>
@@ -91,7 +94,7 @@ export default function Terms() {
         Information und Hilfestellung, ersetzen aber in keinem Fall eine
         persönliche Beratung, Untersuchung oder Diagnose durch einen Facharzt
         oder Experten. Die im Rahmen dieser Webseite bzw. der zugehörigen
-        Web-Applikationen, insbesondere von "STAR.VISIONX.DE" zur Verfügung
+        Web-Applikationen, insbesondere von "RAD.REPORT" zur Verfügung
         gestellten Hilfsmittel dürfen nicht allein und ohne Prüfung zur
         Erstellung von Diagnosen verwendet werden. Bitte beachten Sie hier
         jeglichen Haftungsausschluss. Jeder Benutzer ist angehalten, durch

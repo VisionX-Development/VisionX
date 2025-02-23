@@ -11,7 +11,7 @@ const Ueber: NextPage = () => {
       <h1>
         <strong style={{ color: "red" }}>VISIONX.DEV</strong>ELOPMENT
       </h1>
-      <h2>Webentwicklung aus einer Hand</h2>
+      <h2>Webentwicklung</h2>
       <br />
       <p style={{ fontSize: "2rem" }}>
         <span style={{ visibility: "hidden" }} aria-hidden="true">
