@@ -10,8 +10,6 @@ export default function Terms() {
       <p>
         <strong>VISIONX.DEV</strong>
         <br />
-        Inhaber der Domain: M. Hübner
-        <br />
         <p style={{ fontSize: "1.3rem", textAlign: "left" }}>
           <span style={{ visibility: "hidden" }} aria-hidden="true">
             {/* PLEASE GO AWAY! */}
