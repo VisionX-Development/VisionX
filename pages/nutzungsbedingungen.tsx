@@ -27,11 +27,11 @@ export default function Terms() {
       </p>
       <p>
         Die Betreibung und Betreuung der Webseite VISIONX.DEV sowie weitere
-        damit ggf. verbundener Web-Applikationen (wie z.B. RAD.REPORT) erfolgt
+        damit ggf. verbundener Web-Applikationen (wie z.B. BEFUND.BAR) erfolgt
         ausschließlich privat und ohne gewerblichen Nutzen oder
         Gewinnerziehlungsabsicht. Die Nutzung erfolgt freiwillig. Es besteht
         keine Gewähr auf Funktionalität oder Erreichbarkeit der Webseite
-        VISIONX.DEV und deren verbundenen Web-Applikationen (z.B. RAD.REPORT).
+        VISIONX.DEV und deren verbundenen Web-Applikationen (z.B. BEFUND.BAR).
         Der Betreiber von VISIONX.DEV behält sich vor, die Webseite VISIONX.DEV
         und deren verbundenen Web-Applikationen jederzeit ohne Ankündigung zu
         verändern oder einzustellen.
@@ -70,7 +70,7 @@ export default function Terms() {
       </p>
       <p>
         Die Webseite VISIONX.DEV und deren verbundenen Web-Applikationen wie
-        z.B. RAD.REPORT stehen für eine freie und offene Weltanschauung sowie
+        z.B. BEFUND.BAR stehen für eine freie und offene Weltanschauung sowie
         einen respektvollen Umgang miteinander. VISIONX.DEV erkennt die
         Gleichberechtigung aller Menschen an, unabhängig von Geschlecht oder
         gefühlter Geschlechtszugehörigkeit, sexueler Neigung, Alter, Ursprung,
@@ -92,7 +92,7 @@ export default function Terms() {
         Information und Hilfestellung, ersetzen aber in keinem Fall eine
         persönliche Beratung, Untersuchung oder Diagnose durch einen Facharzt
         oder Experten. Die im Rahmen dieser Webseite bzw. der zugehörigen
-        Web-Applikationen, insbesondere von "RAD.REPORT" zur Verfügung
+        Web-Applikationen, insbesondere von "BEFUND.BAR" zur Verfügung
         gestellten Hilfsmittel dürfen nicht allein und ohne Prüfung zur
         Erstellung von Diagnosen verwendet werden. Bitte beachten Sie hier
         jeglichen Haftungsausschluss. Jeder Benutzer ist angehalten, durch
