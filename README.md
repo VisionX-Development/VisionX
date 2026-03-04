@@ -1,34 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# sv
 
-## Getting Started
+Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
-First, run the development server:
+## Creating a project
 
-```bash
-npm run dev
-# or
-yarn dev
+If you're seeing this, you've probably already done this step. Congrats!
+
+```sh
+# create a new project
+npx sv create my-app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To recreate this project with the same configuration:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```sh
+# recreate this project
+npx sv@0.12.4 create --template minimal --types ts --install npm visionx-sveltekit
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Developing
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-## Learn More
+```sh
+npm run dev
 
-To learn more about Next.js, take a look at the following resources:
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Building
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To create a production version of your app:
 
-## Deploy on Vercel
+```sh
+npm run build
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+You can preview the production build with `npm run preview`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.

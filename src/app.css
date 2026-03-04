@@ -1,0 +1,122 @@
+/* VisionX Global Styles (von Next.js GlobalStyles.tsx übernommen) */
+:root {
+  --background-color-theme: rgba(24, 24, 24, 1);
+  --alert-color-warning: rgba(255, 140, 140, 0.8);
+  --alert-text-warning: rgba(0, 0, 0, 1);
+  --alert-color-message: rgba(255, 250, 130, 0.8);
+  --alert-text-message: rgba(0, 0, 0, 1);
+  --alert-color-success: rgba(155, 240, 150, 0.8);
+  --alert-text-success: rgba(10, 85, 0, 1);
+}
+
+html,
+body {
+  font-size: 1vmax;
+  font-weight: 400;
+  font-family: "Play", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  align-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  flex-wrap: nowrap;
+  background: linear-gradient(
+    170deg,
+    rgb(68, 68, 68) 30%,
+    var(--background-color-theme) 80%
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: red;
+  background-color: var(--background-color-theme);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: scroll !important;
+  z-index: -999;
+  caret-color: transparent;
+}
+
+/* Scrollbars ausblenden */
+::-webkit-scrollbar {
+  display: none !important;
+}
+
+hr {
+  border: 0;
+  margin: 1rem 0 0 0;
+  height: 2px;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 0, 0, 0),
+    red,
+    rgba(255, 0, 0, 0)
+  );
+}
+
+/* Rechtliche/Inhaltsseiten (Über, Datenschutz, Nutzungsbedingungen, Impressum) – wie Next.js TermsMain */
+.legal-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: rgba(210, 210, 210, 1);
+  color: black;
+  padding: 2rem 10rem 2rem 10rem;
+  min-height: 100vh;
+  width: 100vw;
+  align-self: stretch;
+  box-sizing: border-box;
+  /* wie Next: Buchstabenabstand für gesamten Inhalt (Überschriften + Fließtext) */
+  letter-spacing: 0.12rem;
+}
+.legal-page p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: 0 0 1rem 0;
+}
+.legal-page p:last-child {
+  margin-bottom: 0;
+}
+.legal-page .bold {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+.legal-page h1 {
+  color: red;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.8rem;
+}
+.legal-page h2 {
+  margin: 1.5rem 0 0.5rem 0;
+  font-size: 1.4rem;
+}
+.legal-page h3 {
+  margin: 1.25rem 0 0.35rem 0;
+  font-size: 1.2rem;
+}
+.legal-page a {
+  color: red;
+  text-decoration: underline;
+}
+.legal-page a:hover {
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.3));
+}
+@media (max-width: 1200px) {
+  .legal-page {
+    padding: 2rem 4rem 2rem 4rem;
+  }
+}
+@media (max-width: 900px) {
+  .legal-page {
+    padding: 2rem 2rem 2rem 2rem;
+  }
+}
