@@ -1,6 +1,6 @@
 # VisionX SvelteKit – Agent Guidelines
 
-Dieses Projekt ist das SvelteKit-Grundgerüst für VisionX (Migration von Next.js).
+Dieses Projekt ist das SvelteKit-Grundgerüst für VisionX.
 
 ## Stack
 
@@ -29,7 +29,3 @@ Im Projekt ist das **Svelte MCP** (`@sveltejs/mcp`) unter `.cursor` konfiguriert
 ## Auth & Datenbank
 
 Aktuell **ohne Login und ohne Datenbank**. Auth und DB können später manuell ergänzt werden (z. B. better-auth, MongoDB); `src/lib/types.ts` enthält bereits einen `Session`-Typ für die spätere Erweiterung.
-
-## Bezug zum Next.js-Projekt
-
-Das ursprüngliche VisionX-Projekt liegt im übergeordneten Ordner. Siehe `MIGRATION_NEXT_TO_SVELTEKIT.md` im Projektroot für die Migrations-Anleitung.

@@ -8,8 +8,9 @@
 	.footer-main {
 		display: flex;
 		flex-direction: row;
-		justify-content: space-around;
+		justify-content: center;
 		align-items: center;
+		flex-wrap: wrap;
 		padding: 0.7rem 2rem;
 		z-index: 9;
 		background-color: rgba(51, 51, 51, 0.3);
@@ -17,9 +18,9 @@
 		cursor: pointer;
 		border-top: 1px solid rgba(255, 255, 255, 0.1);
 		width: 100vw;
-		height: 5vh;
 	}
 	.footer-main a {
+		margin: 0 1.5rem;
 		color: rgba(255, 0, 0, 1);
 		text-decoration: none;
 	}

@@ -27,6 +27,8 @@
 		font-size: 8vmax;
 		letter-spacing: 2.5rem;
 		font-family: inherit;
+		margin: 0;
+		margin-top: -1.5rem;
 	}
 	.capital {
 		font-size: 8vmax;
