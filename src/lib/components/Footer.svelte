@@ -1,7 +1,11 @@
+<script lang="ts">
+	import * as m from '$lib/paraglide/messages.js';
+</script>
+
 <footer class="footer-main">
-	<a href="/datenschutz">Datenschutz</a>
-	<a href="/nutzungsbedingungen">Nutzungsbedingungen</a>
-	<a href="/impressum">Impressum</a>
+	<a href="/privacy">{m.footer_privacy()}</a>
+	<a href="/terms">{m.footer_terms()}</a>
+	<a href="/about">{m.footer_imprint()}</a>
 </footer>
 
 <style>
@@ -26,5 +30,14 @@
 	}
 	.footer-main a:hover {
 		filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.6));
+	}
+	@media (max-width: 768px) {
+		.footer-main {
+			font-size: 1.85rem;
+			padding: 1rem 1.25rem;
+		}
+		.footer-main a {
+			margin: 0 1rem;
+		}
 	}
 </style>

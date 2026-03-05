@@ -14,6 +14,7 @@ Dieses Projekt ist das SvelteKit-Grundgerüst für VisionX.
 - **Shared Code:** `src/lib/` (Komponenten, Utils, Stores). Im Code mit `$lib/...` importieren.
 - **Statische Assets:** `static/` (z. B. Bilder, Fonts). Pfade ohne `static/` (z. B. `/favicon.svg`).
 - **Styling:** Global in `src/app.css`, komponentenbezogen in `<style>` in `.svelte`-Dateien (scoped).
+- **Mehrsprachigkeit (i18n):** Nutzer sichtbare Texte sind immer in **Deutsch und Englisch** bereitzustellen. Übersetzungen liegen in `messages/de.json` und `messages/en.json` (Paraglide/Inlang). Im Code werden Texte über `$lib/paraglide/messages.js` verwendet (z. B. `m.nav_about()`). Neue UI-Texte: Keys in beiden Message-Dateien anlegen, danach Build/Dev – Paraglide generiert die Aufrufe. **Wichtig:** Message-Keys sind immer auf **Englisch** zu benennen (z. B. `privacy_title` statt `datenschutz_title`).
 
 ## Wichtige Befehle
 
